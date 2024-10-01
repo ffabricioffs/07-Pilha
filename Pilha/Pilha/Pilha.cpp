@@ -76,24 +76,36 @@ void inicializar()
 
 void push()
 {
-	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
+		cout << "Erro ao alocar memória! \n";
 		return;
 	}
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
+	novo->prox = topo;
+	topo = novo;
 
+	cout << "Elemento inserido: " << novo->valor << "\n";
 
 }
 
 void pop()
 {
 
-	
+	if (topo == NULL) {
+		cout << "Pilha Vazia \n";
+		return;
+	}
+
+
+	NO* aux = topo;
+	cout << "Elemento removido: " << aux->valor << "\n";
+	topo = topo->prox;
+
+	free(aux);
 
 }
 
